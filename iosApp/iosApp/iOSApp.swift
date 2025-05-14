@@ -4,7 +4,6 @@ import ComposeApp
 @UIApplicationMain
 class AppDelegate: NSObject, UIApplicationDelegate {
     var window: UIWindow?
-    let rinku = RinkuIos.init(deepLinkFilter: nil, deepLinkMapper: nil)
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         self.window = UIWindow(frame: UIScreen.main.bounds)
@@ -26,7 +25,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     private func handleQuickAction(_ shortcutItem: UIApplicationShortcutItem) -> Bool {
         switch shortcutItem.type {
         case "org.wk.composempquickaction.quick.action":
-            rinku.onDeepLinkReceived(url: "Hello from quick action")
+           let manager = QuickActionManager()
+           manager.handle(action: "home")
             return true
         default:
             return false

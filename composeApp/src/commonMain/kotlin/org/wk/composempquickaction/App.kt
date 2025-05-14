@@ -5,26 +5,20 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import dev.theolm.rinku.DeepLink
-import dev.theolm.rinku.compose.ext.DeepLinkListener
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import org.jetbrains.compose.ui.tooling.preview.Preview
+import org.wk.composempquickaction.utils.AppQuickActionHandler
 
 @Composable
 @Preview
 fun App() {
 
-    var deepLink by remember { mutableStateOf<DeepLink?>(null) }
-    DeepLinkListener { deepLink = it }
-
+    val quickActionMessage = AppQuickActionHandler.quickActionState.collectAsStateWithLifecycle()
     MaterialTheme {
         Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-            Text(text = deepLink?.data ?: "Hello World!")
+            quickActionMessage.value?.ifEmpty { "Hello World!" }?.let { Text(text = it) }
         }
     }
 }
