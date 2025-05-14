@@ -46,5 +46,14 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIApplicationShortcutItems</key>
+    <array>
+        <dict>
+            <key>UIApplicationShortcutItemType</key>
+            <string>org.wk.composempquickaction.quick.action</string>
+            <key>UIApplicationShortcutItemTitle</key>
+            <string>KMM Action</string>
+        </dict>
+    </array>
 </dict>
 </plist>

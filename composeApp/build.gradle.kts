@@ -23,6 +23,7 @@ kotlin {
         iosSimulatorArm64()
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
+            export("dev.theolm:rinku:1.4.0")
             baseName = "ComposeApp"
             isStatic = true
         }
@@ -43,6 +44,8 @@ kotlin {
             implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtime.compose)
+            api(libs.rinku)
+            implementation(libs.rinku.compose.ext)
         }
     }
 }
