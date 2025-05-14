@@ -11,7 +11,7 @@ object AppQuickActionHandler {
     fun handleQuickAction(action: String) {
         when (action) {
             "home" -> {
-                _quickActionState.value = "Quick Action triggered: Home"
+                _quickActionState.value = "Hello Quick Action"
             }
             else -> {
                 println("Unknown Quick Action: $action")
