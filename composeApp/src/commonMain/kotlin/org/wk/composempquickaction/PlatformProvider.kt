@@ -1,6 +1,6 @@
 package org.wk.composempquickaction
 
-class Greeting {
+class PlatformProvider {
     private val platform = getPlatform()
 
     fun getPlatformName(): String {
